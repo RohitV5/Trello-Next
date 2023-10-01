@@ -1,3 +1,4 @@
+"use client"
 import getUrl from "@/lib/getUrl";
 import { useBoardStore } from "@/store/BoardStore";
 import { Todo, TypedColumn } from "@/typings";
@@ -30,6 +31,7 @@ const TodoCard = ({
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   useEffect(() => {
+
     if (todo.image) {
       const fetchImage = async () => {
         const url = await getUrl(todo.image!);
@@ -50,7 +52,7 @@ const TodoCard = ({
       ref={innerRef}
     >
       <div className="flex justify-between items-center p-5">
-        <p>{todo.title}</p>
+        <p className="text-gray-900">{todo.title}</p>
         <button
           className="text-red-500 hover:text-red-600"
           onClick={() => deleteTask(index, todo, id)}

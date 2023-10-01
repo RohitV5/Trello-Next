@@ -9,6 +9,8 @@ export const getTodosGroupedByColumn = async () => {
 
   const todos = data.documents;
 
+  todos.forEach(todo => {if(todo.image) todo.image = JSON.parse(todo.image)})
+
   const columns = todos.reduce((acc, todo) => {
     if (!acc.get(todo.status)) {
       acc.set(todo.status, { id: todo.status, todos: [] });
